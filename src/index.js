@@ -15,6 +15,9 @@ app.use(express.static(publicPath));
 // The vendor's uv.config.js won't conflict with our uv.config.js inside the publicPath directory.
 app.use("/uv/", express.static(uvPath));
 
+
+
+
 // Error for everything else
 app.use((req, res) => {
   res.status(404);
@@ -23,7 +26,11 @@ app.use((req, res) => {
 
 const server = createServer();
 
+
+
+
 server.on("request", (req, res) => {
+  
   if (bare.shouldRoute(req)) {
     bare.routeRequest(req, res);
   } else {
@@ -61,3 +68,4 @@ server.on("listening", () => {
 server.listen({
   port,
 });
+
